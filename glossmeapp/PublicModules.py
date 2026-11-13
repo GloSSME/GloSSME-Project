@@ -26,7 +26,7 @@ def fnGetCommonValues(      nLanguageID             =   1
         cStrSQL         +=  "   AND   nCommonValueCategoryID   =   %s"
         tuParameters.append(nCommonValueCategoryID)
 
-    cStrSQL             +=  "   ORDER BY     ViewCommonValues"
+    cStrSQL             +=  "   ORDER BY     cCommonValueName"
     tuParameters        =   tuple(tuParameters)
 
     dtResult            =   fnPublicFetchAll(       cStrSQL

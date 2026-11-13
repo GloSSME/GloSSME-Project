@@ -379,6 +379,16 @@ def fnSaveServiceMasterDetails(
                             ,   'default'
                             ,   bReturnID   =   True
                         )
+def fnGetBrandList():
+    cstrSQL = """
+                SELECT   [nBrandModelMasterID]
+                        ,[cBrandName]
+                FROM     [BrandModelMaster]
+                WHERE    nStatusID              = 1
+                ORDER BY cBrandName
+            """
+
+    return fnPublicFetchAll(cstrSQL, [], 'default')
 
 
 

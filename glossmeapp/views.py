@@ -379,7 +379,7 @@ def fnDeviceInstallUpdate(request):
                             )
 
 @api_view(['POST'])
-def fnSaveService(request):
+def     fnSaveService(request):
 
     szServiceData   =   ServiceSerializer(data = request.data)
 
@@ -454,3 +454,10 @@ def fnSaveService(request):
                         ,   "nServiceMasterID"  :   nServiceMasterID
                         },  status = 201 if iMode == 1 else 200
                     )
+@api_view(['GET'])
+def fnGetBrands(request):
+   
+
+    lstResult = fnGetBrandList() or []
+
+    return Response({'nResult': 1, 'data': lstResult})

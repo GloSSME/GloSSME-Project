@@ -18,6 +18,7 @@ urlpatterns = [
     path('adduser/',views.fnAddUser,name='fnAddUser'),
 
     path('addservice/',views.fnSaveService,name='fnSaveService'),
+    path('brandlist/', views.fnGetBrands, name='fnGetBrands'),
 
 
 

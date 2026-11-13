@@ -52,7 +52,6 @@ def fnSaveandUploadImageFile(cLogoPath, cFolderName):
 
     return None
 
-
 def fnSaveEditForm(     cStrSQL
                     ,   params      
                     ,   cDBName    
@@ -81,7 +80,6 @@ def fnSaveEditForm(     cStrSQL
 
     finally:
         dbconnection.close()
-
 
 def fnPublicFetchAll(       cStrSQL
                         ,   cParamValue
@@ -173,8 +171,6 @@ def fnChkValue(         cColumnName
         nResultValue    =   cursor.fetchone()
     
     return nResultValue
-
-
 
 def fnPublicDataGroupBy(    cStrSQL
                         ,   cParamValue
