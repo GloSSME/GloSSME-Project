@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('glossmeapp.urls')),
     path('commondetails/', include('CommonDetails.urls')),
-    # path('', include('UserDetails.urls')),
+    path('productdetails/', include('ProductDetails.urls')),
     # path('organization/',include('Organization.urls')),
 
     # path('servicedetails/',include('ServiceDetails.urls')),
