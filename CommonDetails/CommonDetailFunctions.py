@@ -4,7 +4,7 @@ from    django.conf                    import  settings
 from    glossme.PublicFunctions        import  *
 
 def fnGetBrandList(cBrandName=None):
-    print(cBrandName,"cBrandName")
+
     cstrSQL = """
                 SELECT   TOP 500 [nBrandModelMasterID]
                         ,[cBrandName]
