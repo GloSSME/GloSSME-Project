@@ -4,7 +4,7 @@ from    django.conf                    import  settings
 from    glossme.PublicFunctions        import  *
 
 def fnGetBrandList(cBrandName=None):
-
+    print(cBrandName,"cBrandName")
     cstrSQL = """
                 SELECT   TOP 500 [nBrandModelMasterID]
                         ,[cBrandName]
@@ -19,4 +19,13 @@ def fnGetBrandList(cBrandName=None):
 
     cstrSQL += " ORDER BY cBrandName"
 
-    return fnPublicFetchAll(cstrSQL, lstParams, 'default')
+    dsBrandList= fnPublicFetchAll(cstrSQL, lstParams, 'default')
+    lstBrandList     =   [
+                            {
+                                    'nBrandModelMasterID'         :   row[0]
+                                ,   'cBrandName'                  :   row[1]
+                              
+                            }
+                                for row in dsBrandList
+                            ]
+    return lstBrandList
