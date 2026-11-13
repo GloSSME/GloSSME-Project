@@ -22,7 +22,8 @@ import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-      path('', include('glossmeapp.urls')),
+    path('', include('glossmeapp.urls')),
+    path('commondetails/', include('CommonDetails.urls')),
     # path('', include('UserDetails.urls')),
     # path('organization/',include('Organization.urls')),
 
