@@ -35,6 +35,9 @@ def     fnAddProductDetails(request):
 
     # save the uploaded images, keep only the file names
     lstImages       =   []
+    cQRCode     =   data.get('cQRCode')
+    if cQRCode:
+        cQRCode =   fnSaveandUploadImageFile(cQRCode, 'Service/QRCode') or ''
 
     for oFile in data['cImages']:
         cFileName   =   fnSaveandUploadImageFile(oFile, 'Service/Images')
@@ -58,7 +61,7 @@ def     fnAddProductDetails(request):
                                     ,   data['nOperationRangeKms']
                                     ,   data['nStaffNeededYN']
                                     ,   data['nHolidayIncludedYN']
-                                    ,   ''
+                                    ,   cQRCode
                                     ,   data['nLat']
                                     ,   data['nLong']
                                     ,   data['cDescriptions']
@@ -70,6 +73,10 @@ def     fnAddProductDetails(request):
         # the database rolled back, so remove the files that were just saved
         for cFileName in lstImages:
             cFilePath   =   os.path.join(settings.MEDIA_ROOT, 'Service', 'Images', cFileName)
+            if os.path.exists(cFilePath):
+                os.remove(cFilePath)
+        if cQRCode:
+            cFilePath   =   os.path.join(settings.MEDIA_ROOT, 'Service', 'QRCode', cQRCode)
             if os.path.exists(cFilePath):
                 os.remove(cFilePath)
 

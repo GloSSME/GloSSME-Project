@@ -23,6 +23,7 @@ class ServiceSerializer(serializers.Serializer):
     nOperationRangeKms      =   serializers.IntegerField(min_value=0, default=0)
     nStaffNeededYN          =   serializers.ChoiceField(choices=[0, 1], default=0)
     nHolidayIncludedYN      =   serializers.ChoiceField(choices=[0, 1], default=0)
+    cQRCode                 =   serializers.ImageField(required=False, allow_null=True, default=None)
     nLat                    =   nLatitude(required=False)
     nLong                   =   nLongitude(required=False)
     cDescriptions           =   serializers.ListField(
@@ -56,3 +57,7 @@ class ServiceSerializer(serializers.Serializer):
             raise serializers.ValidationError("Enter The Operation Range In Kms.")
 
         return data
+    def validate_cQRCode(self, value):
+        if value and value.size > 1024 * 1024:
+            raise serializers.ValidationError("QR Code image is larger than 1 MB.")
+        return value
